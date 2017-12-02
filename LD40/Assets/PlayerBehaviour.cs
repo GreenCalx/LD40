@@ -4,13 +4,22 @@ using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour {
 
-	// Use this for initialization
+    private int _Health;
+    private Animator _MainAnimator;
+    private PlayerController _Controller;
+    // Use this for initialization
 	void Start () {
-		
+	     	
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
+
+    void UpdatePositionFromInputs()
+    {
+        if (Input.GetKeyDown(KeyCode.RightArrow)) { 
+        }
+    }
 }
