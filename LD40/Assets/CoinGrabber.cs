@@ -13,12 +13,23 @@ public class CoinGrabber : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
 
-    void addCoin(int n_coin)
+        if ( isPlayerOnCoin() );
+            addCoin(1);
+
+    }
+
+    // 
+
+    private bool isPlayerOnCoin()
+    {
+
+    }
+
+    private void addCoin(int n_coin)
     {
         __coinGrabbed += n_coin;
     }
+
 
 }
