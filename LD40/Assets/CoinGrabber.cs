@@ -23,7 +23,7 @@ public class CoinGrabber : MonoBehaviour {
 
     private bool isPlayerOnCoin()
     {
-
+        return false;
     }
 
     private void addCoin(int n_coin)

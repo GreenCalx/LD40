@@ -3,10 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour {
-
-    private int _Health;
-    private Animator _MainAnimator;
-    private PlayerController _Controller;
     // Use this for initialization
 	void Start () {
 	     	
@@ -16,10 +12,4 @@ public class PlayerBehaviour : MonoBehaviour {
 	void Update () {
 		
 	}
-
-    void UpdatePositionFromInputs()
-    {
-        if (Input.GetKeyDown(KeyCode.RightArrow)) { 
-        }
-    }
 }
