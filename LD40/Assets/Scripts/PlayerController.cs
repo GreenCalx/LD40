@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-    private static Vector3 _DirectionRight = new Vector3( 1, 0, 0);
-    private static Vector3 _DirectionLeft  = new Vector3(-1, 0, 0);
-    private static Vector3 _DirectionUp    = new Vector3( 0, 1, 0);
-    private static Vector3 _DirectionDown  = new Vector3( 0,-1, 0);
-
     private bool _IsMenuMode;
 
 	// Use this for initialization
@@ -21,26 +16,27 @@ public class PlayerController : MonoBehaviour {
         Transform transform = GetComponent<Transform>();
         PlayerBehaviour behavior = GetComponent<PlayerBehaviour>();
         if(transform) {
-            if(Input.GetKey(KeyCode.RightArrow)) {    
-                transform.Translate(_DirectionRight * behavior._PlayerSpeed);
-                
+            if(Input.GetAxis("Horizontal") > 0) {    
+                transform.Translate( Vector3.right * behavior._PlayerSpeed);               
             }
 
-            if (Input.GetKey(KeyCode.LeftArrow))
+            if (Input.GetAxis("Horizontal") < 0)
             {
-                transform.Translate(_DirectionLeft * behavior._PlayerSpeed);
-            }
-
-
-            if (Input.GetKey(KeyCode.UpArrow))
-            {
-                transform.Translate(_DirectionUp * behavior._PlayerSpeed);
+                transform.Translate( -Vector3.right * behavior._PlayerSpeed);
             }
 
 
-            if (Input.GetKey(KeyCode.DownArrow))
+            if (Input.GetAxis("Vertical") > 0)
             {
-                transform.Translate(_DirectionDown * behavior._PlayerSpeed);
+                JumpBehaviour jump = GetComponent<JumpBehaviour>();
+                jump.IsJumping = true;
+                //transform.Translate(_DirectionUp * behavior._PlayerSpeed);
+            }
+
+
+            if (Input.GetAxis("Vertical") < 0)
+            {
+                //transform.Translate(_DirectionDown * behavior._PlayerSpeed);
             }
         }
 	}

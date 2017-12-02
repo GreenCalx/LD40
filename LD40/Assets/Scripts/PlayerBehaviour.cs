@@ -7,7 +7,7 @@ public class PlayerBehaviour : MonoBehaviour {
     public float _PlayerSpeed { get; set; }
 
     // Use this for initialization
-	void Start () {
+    void Start () {
         _PlayerSpeed = 10;
 	}
 	
