@@ -25,5 +25,6 @@ public class CoinBehaviour : MonoBehaviour {
             return;
 
         coinGrabber.addCoin(__value);
+        Destroy(this);
     }
 }
