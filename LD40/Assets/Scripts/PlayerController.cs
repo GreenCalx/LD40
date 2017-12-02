@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-    private static Vector3 DirectionRight = new Vector3( 1, 0, 0);
-    private static Vector3 DirectionLeft  = new Vector3(-1, 0, 0);
-    private static Vector3 DirectionUp    = new Vector3( 0, 1, 0);
-    private static Vector3 DirectionDown  = new Vector3( 0,-1, 0);
+    private static Vector3 _DirectionRight = new Vector3( 1, 0, 0);
+    private static Vector3 _DirectionLeft  = new Vector3(-1, 0, 0);
+    private static Vector3 _DirectionUp    = new Vector3( 0, 1, 0);
+    private static Vector3 _DirectionDown  = new Vector3( 0,-1, 0);
 
     private bool _IsMenuMode;
 
@@ -19,27 +19,28 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         Transform transform = GetComponent<Transform>();
+        PlayerBehaviour behavior = GetComponent<PlayerBehaviour>();
         if(transform) {
-            
-            if(Input.GetKeyDown(KeyCode.RightArrow)) {    
-                transform.Translate(DirectionRight);
+            if(Input.GetKey(KeyCode.RightArrow)) {    
+                transform.Translate(_DirectionRight * behavior._PlayerSpeed);
+                
             }
 
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            if (Input.GetKey(KeyCode.LeftArrow))
             {
-                transform.Translate(DirectionLeft);
-            }
-
-
-            if (Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                transform.Translate(DirectionUp);
+                transform.Translate(_DirectionLeft * behavior._PlayerSpeed);
             }
 
 
-            if (Input.GetKeyDown(KeyCode.DownArrow))
+            if (Input.GetKey(KeyCode.UpArrow))
             {
-                transform.Translate(DirectionDown);
+                transform.Translate(_DirectionUp * behavior._PlayerSpeed);
+            }
+
+
+            if (Input.GetKey(KeyCode.DownArrow))
+            {
+                transform.Translate(_DirectionDown * behavior._PlayerSpeed);
             }
         }
 	}
