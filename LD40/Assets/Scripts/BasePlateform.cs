@@ -13,4 +13,5 @@ public class BasePlateform : MonoBehaviour {
 	void Update () {
 		
 	}
+
 }
