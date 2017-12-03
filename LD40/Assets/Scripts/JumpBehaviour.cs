@@ -12,7 +12,7 @@ public class JumpBehaviour : MonoBehaviour {
     public bool WallSlide { get; set; }
 
     Rigidbody2D rb;
-    Vector3 SurfaceNormal;
+    public Vector3 SurfaceNormal;
 
     // Use this for initialization
     void Start () {
@@ -36,31 +36,20 @@ public class JumpBehaviour : MonoBehaviour {
             AskedForJump = true;
             HasDoubleJumped = true;
         }
-    }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        IsJumping = false;
-        HasDoubleJumped = false;
-    }
-
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        IsJumping = false;
-        HasDoubleJumped = false;
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        IsJumping = true;
-        WallSlide = false;
-        
+        if (WallSlide)
+        {
+            AskedForJump = true;
+        }
+        Debug.Log("AskedForJump : " + AskedForJump);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log("CollisionEnter");
+        IsJumping = false;
+        HasDoubleJumped = false;
         SurfaceNormal = collision.contacts[0].normal;
-        Debug.Log(Vector2.Dot(SurfaceNormal, Vector2.up));
         if (Vector2.Dot(SurfaceNormal, Vector2.up) <= 0.1)
         { 
             // WAll riding
@@ -68,13 +57,33 @@ public class JumpBehaviour : MonoBehaviour {
         }
     }
 
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        Debug.Log("CollisionExit");
+        IsJumping = true;
+        WallSlide = false;
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        IsJumping = false;
+        HasDoubleJumped = false;
+        SurfaceNormal = collision.contacts[0].normal;
+        if (Vector2.Dot(SurfaceNormal, Vector2.up) <= 0.1)
+        {
+            // WAll riding
+            WallSlide = true;
+        }
+    }
+
     // Update is called once per frame
     void FixedUpdate () {
+        Debug.Log(WallSlide + " " + IsJumping + " " + HasDoubleJumped);
         if(AskedForJump)
         {
             if (WallSlide)
             {
-                rb.AddForce(new Vector2(SurfaceNormal.x * JumpPower*2, JumpPower), ForceMode2D.Impulse);
+                rb.AddForce(new Vector2(SurfaceNormal.x*100, SurfaceNormal.y), ForceMode2D.Impulse);
             }
             else
             {
@@ -86,7 +95,6 @@ public class JumpBehaviour : MonoBehaviour {
 
         if (WallSlide)
         {
-            Debug.Log("wallslide");
             rb.velocity = new Vector2(0, -0.7f);
         }
     }

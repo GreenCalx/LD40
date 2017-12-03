@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour {
 
-    public float _PlayerSpeed { get; set; }
+    public float PlayerMaxSpeed { get; set; }
+    public float PlayerSpeed { get; set; }
     private bool _IsDead = false;
 
     // Use this for initialization
     void Start () {
-        _PlayerSpeed = 10;
+        PlayerSpeed = 100;
+        PlayerMaxSpeed = 10;
 	}
 
     void Kill()
