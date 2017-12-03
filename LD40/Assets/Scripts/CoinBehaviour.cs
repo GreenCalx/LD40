@@ -5,10 +5,15 @@ using UnityEngine;
 public class CoinBehaviour : MonoBehaviour {
 
     private int __value;
+    public List<GameObject> SpawnWhenGrabbed;
 
 	// Use this for initialization
 	void Start () {
         __value = 1;
+        foreach(GameObject go in SpawnWhenGrabbed)
+        {
+            go.SetActive(false);
+        }
     }
 	
 	// Update is called once per frame
@@ -26,6 +31,12 @@ public class CoinBehaviour : MonoBehaviour {
             return;
 
         coinGrabber.addCoin(__value);
+
+        foreach ( GameObject go in SpawnWhenGrabbed)
+        {
+            go.SetActive(true);
+        }
+
         Destroy(this.gameObject);
     }
 }
