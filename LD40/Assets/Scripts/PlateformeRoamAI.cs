@@ -13,6 +13,7 @@ public class PlateformeRoamAI : MonoBehaviour
     private Vector2 __rightLimit;
     private bool isMovingLeft;
 
+    private FixedSizedQueue<float> lastXPositions;
     // Use this for initialization
     void Start()
     {
@@ -39,6 +40,9 @@ public class PlateformeRoamAI : MonoBehaviour
         __moveController = GetComponent<MoveController>();
         __moveController.setCurrentDirection(__currentDirection);
 
+        // Simple position tracker
+        lastXPositions = new FixedSizedQueue<float>(10);  // Arbitrary cache size ( record 5 last positions )
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -52,13 +56,13 @@ public class PlateformeRoamAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         // Update position
         Transform transform = GetComponent<Transform>();
         Transform plateformTransform = attachedPlateform.GetComponent<Transform>();
 
         if (!!transform && !!__moveController)
         {
+            float current_x_pos = transform.position.x;
 
             if ((transform.position.x <= __leftLimit.x) && isMovingLeft)
                 flip();
@@ -66,6 +70,12 @@ public class PlateformeRoamAI : MonoBehaviour
                 flip();
             else
                 __moveController.move();
+
+            lastXPositions.enqueue(current_x_pos);
+
+            if (isStuck())
+                flip();
+
         }
     }
 
@@ -77,4 +87,15 @@ public class PlateformeRoamAI : MonoBehaviour
         __moveController.setCurrentDirection( __currentDirection );
     }
 
+    private bool isStuck()
+    {
+        float ref_x_position = lastXPositions.getValueAtIndex(0);
+        for (int i=1; i < lastXPositions.Limit; ++i)
+        {
+            if (ref_x_position != lastXPositions.getValueAtIndex(i))
+                return false;
+        }
+
+        return true;
+    }
 }
