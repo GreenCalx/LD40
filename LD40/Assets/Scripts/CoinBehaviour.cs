@@ -14,14 +14,13 @@ public class CoinBehaviour : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
-
 	}
 
     // Tries to get grabbed by the collider
     void onTriggerEnter(Collider collider)
     {
-        CoinGrabber coinGrabber = collider.GetComponentInParent<CoinGrabber>();
-        if (!!coinGrabber)
+        CoinGrabber coinGrabber = collider.GetComponent<CoinGrabber>();
+        if (null==coinGrabber)
             return;
 
         coinGrabber.addCoin(__value);
