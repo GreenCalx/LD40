@@ -12,32 +12,30 @@ public class PlayerController : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
         Transform transform = GetComponent<Transform>();
         PlayerBehaviour behavior = GetComponent<PlayerBehaviour>();
         if(transform) {
-            if(Input.GetAxis("Horizontal") > 0) {    
-                transform.Translate( Vector3.right * behavior._PlayerSpeed);               
+            float Movement = Input.GetAxis("Horizontal");
+
+            if (Movement != 0) {
+                rb.velocity = new Vector2(Movement * behavior._PlayerSpeed, rb.velocity.y);              
+            }
+            else {
+                rb.velocity = new Vector2(0, rb.velocity.y);
             }
 
-            if (Input.GetAxis("Horizontal") < 0)
-            {
-                transform.Translate( -Vector3.right * behavior._PlayerSpeed);
-            }
-
-
-            if (Input.GetAxis("Vertical") > 0)
-            {
+            if (Input.GetKeyDown(KeyCode.UpArrow)) {
                 JumpBehaviour jump = GetComponent<JumpBehaviour>();
-                jump.IsJumping = true;
+                if(!jump.IsJumping)
+                {
+                    rb.velocity = new Vector2(rb.velocity.x, jump.JumpPower);
+                }
+                
                 //transform.Translate(_DirectionUp * behavior._PlayerSpeed);
             }
 
-
-            if (Input.GetAxis("Vertical") < 0)
-            {
-                //transform.Translate(_DirectionDown * behavior._PlayerSpeed);
-            }
         }
 	}
 }
