@@ -60,7 +60,7 @@ public class FilterIconSelector : MonoBehaviour {
                 Image image = image_go.GetComponent<Image>();
                 // Make UI parent
                 image.transform.SetParent(ui.transform);
-                image.rectTransform.position = new Vector3(Base, 300, 0);
+                image.rectTransform.position = new Vector3(Base, 375, 0);
                 __imageList.Add(image_go);
             }
         }
