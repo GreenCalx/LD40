@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerBehaviour : MonoBehaviour {
 
@@ -17,6 +18,7 @@ public class PlayerBehaviour : MonoBehaviour {
     public void Kill()
     {
         _IsDead = true;
+        SceneManager.LoadScene("game_over");
     }
 	
 	// Update is called once per frame
