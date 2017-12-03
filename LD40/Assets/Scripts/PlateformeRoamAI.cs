@@ -54,7 +54,7 @@ public class PlateformeRoamAI : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         // Update position
         Transform transform = GetComponent<Transform>();
@@ -85,6 +85,8 @@ public class PlateformeRoamAI : MonoBehaviour
         __currentDirection.x *= (-1);
         isMovingLeft = (__currentDirection.x < 0);
         __moveController.setCurrentDirection( __currentDirection );
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        sr.flipX = !sr.flipX;
     }
 
     private bool isStuck()
