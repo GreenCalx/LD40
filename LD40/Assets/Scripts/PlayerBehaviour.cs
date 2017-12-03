@@ -21,13 +21,16 @@ public class PlayerBehaviour : MonoBehaviour {
     public void Kill()
     {
         _IsDead = true;
-        SceneManager.LoadScene("game_over");
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
         if (_IsDead)
+        {
             Destroy(this.gameObject);
-		
-	}
+            SceneManager.LoadScene("game_over");
+
+        }
+    }
 }

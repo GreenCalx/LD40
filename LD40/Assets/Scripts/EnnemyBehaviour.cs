@@ -11,8 +11,14 @@ public class EnnemyBehaviour : MonoBehaviour {
 		
 	}
 
+    public void Kill()
+    {
+        IsAlive = false;
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log("COLLISION ENTER ENNEMYBEHAVIOUR");
         GameObject go = collision.collider.gameObject;
         if (go.name.Contains("player"))
         {
@@ -26,6 +32,7 @@ public class EnnemyBehaviour : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-		
+        if (!IsAlive)
+            Destroy(this.gameObject);
 	}
 }

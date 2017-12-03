@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class Upgrades : MonoBehaviour {
 
-    public int n_filters = 2;
+    public int n_filters = 1;
 
 }
