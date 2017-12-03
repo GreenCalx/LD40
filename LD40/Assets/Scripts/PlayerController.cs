@@ -18,13 +18,7 @@ public class PlayerController : MonoBehaviour {
         PlayerBehaviour behavior = GetComponent<PlayerBehaviour>();
         if(transform) {
             float Movement = Input.GetAxis("Horizontal");
-
-            if (Movement != 0) {
-                rb.velocity = new Vector2(Movement * behavior._PlayerSpeed, rb.velocity.y);              
-            }
-            else {
-                rb.velocity = new Vector2(0, rb.velocity.y);
-            }
+            rb.velocity = new Vector2(Movement * behavior._PlayerSpeed, rb.velocity.y);              
 
             if (Input.GetKeyDown(KeyCode.UpArrow)) {
                 JumpBehaviour jump = GetComponent<JumpBehaviour>();

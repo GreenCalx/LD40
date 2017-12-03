@@ -22,9 +22,6 @@ public class JumpBehaviour : MonoBehaviour {
     private void OnTriggerStay2D(Collider2D other)
     {
         IsJumping = false;
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        rb.AddForce(Vector2.up * JumpPower, ForceMode2D.Impulse);
-
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
