@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour {
     JumpBehaviour jump;
     PlayerBehaviour behaviour;
 
-    KeyCode JumpKey = KeyCode.UpArrow;
+    public static KeyCode AccelarationKey = KeyCode.LeftShift;
 
     // Use this for initialization
     void Start () {
@@ -21,11 +21,15 @@ public class PlayerController : MonoBehaviour {
 
     private void Update()
     {
-        if (Input.GetKeyDown(JumpKey))
+        if (Input.GetKeyDown(AccelarationKey))
         {
-            //jump.AskForJump();
+            behaviour.PlayerSpeed = behaviour.PlayerMaxSpeed; 
         }
-        return;
+        if (Input.GetKeyUp(AccelarationKey))
+        {
+            behaviour.PlayerSpeed = PlayerBehaviour.PlayerBaseSpeed;
+        }
+                return;
     }
 	
 	// Update is called once per frame

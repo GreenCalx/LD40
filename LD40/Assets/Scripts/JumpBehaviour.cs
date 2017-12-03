@@ -16,14 +16,17 @@ public class JumpBehaviour : MonoBehaviour {
     float RayLength;
 
     // Jump parameters
-    public float speed = 14f;
     public float accel = 6f;
     public float airAccel = 3f;
     public float jump = 14f;
     private Vector2 input;
 
+    // Player data
+    PlayerBehaviour behaviour;
+
     // Use this for initialization
     void Start () {
+        behaviour = GetComponent<PlayerBehaviour>();
         AskedForJump = false;
         CanDoubleJump = true;
         RB2D = GetComponent<Rigidbody2D>();
@@ -104,7 +107,7 @@ public class JumpBehaviour : MonoBehaviour {
 
         Debug.Log(CanDoubleJump);
 
-        RB2D.AddForce(new Vector2(((input.x * speed) - RB2D.velocity.x) * (IsGrounded() ? accel : airAccel), 
+        RB2D.AddForce(new Vector2(((input.x * behaviour.PlayerSpeed) - RB2D.velocity.x) * (IsGrounded() ? accel : airAccel), 
                                     0)); 
 
         RB2D.velocity = new Vector2((input.x == 0 && IsGrounded()) ? 0 : RB2D.velocity.x, 
@@ -113,7 +116,7 @@ public class JumpBehaviour : MonoBehaviour {
         if (input.y == 1 && !IsTouchingSomething() && CanDoubleJump) CanDoubleJump = false;
 
         if (IsOnWall() && !IsGrounded() && input.y == 1)
-            RB2D.velocity = new Vector2(-wallDirection() * speed * 0.75f, RB2D.velocity.y);
+            RB2D.velocity = new Vector2(-wallDirection() * behaviour.PlayerSpeed * 0.75f, RB2D.velocity.y);
 
         Debug.Log(CanDoubleJump);
 

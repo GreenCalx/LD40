@@ -5,14 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class PlayerBehaviour : MonoBehaviour {
 
+    public static int PlayerBaseSpeed = 15;
+    public static int PlayerBaseMaxSpeed = 25;
+
     public float PlayerMaxSpeed { get; set; }
     public float PlayerSpeed { get; set; }
     private bool _IsDead = false;
 
     // Use this for initialization
     void Start () {
-        PlayerSpeed = 100;
-        PlayerMaxSpeed = 10;
+        PlayerSpeed = PlayerBaseSpeed;
+        PlayerMaxSpeed = PlayerBaseMaxSpeed;
 	}
 
     public void Kill()
