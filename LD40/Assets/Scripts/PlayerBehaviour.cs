@@ -14,13 +14,15 @@ public class PlayerBehaviour : MonoBehaviour {
         PlayerMaxSpeed = 10;
 	}
 
-    void Kill()
+    public void Kill()
     {
         _IsDead = true;
     }
 	
 	// Update is called once per frame
 	void Update () {
+        if (_IsDead)
+            Destroy(this.gameObject);
 		
 	}
 }
