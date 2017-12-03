@@ -7,30 +7,32 @@ public class PlayerController : MonoBehaviour {
     private bool _IsMenuMode;
     Rigidbody2D rb;
     JumpBehaviour jump;
+    PlayerBehaviour behaviour;
+
+    KeyCode JumpKey = KeyCode.UpArrow;
+
     // Use this for initialization
     void Start () {
         _IsMenuMode = false;
          rb = GetComponent<Rigidbody2D>();
         jump = GetComponent<JumpBehaviour>();
+        behaviour = GetComponent<PlayerBehaviour>();
     }
 
     private void Update()
     {
-        if (!jump.IsJumping) {
-            if (Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                jump.AskForJump = true;
-            }
+        if (Input.GetKeyDown(JumpKey))
+        {
+            jump.AskForJump();
         }
+        return;
     }
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        Transform transform = GetComponent<Transform>();
-        PlayerBehaviour behavior = GetComponent<PlayerBehaviour>();
         if(transform) {
             float Movement = Input.GetAxis("Horizontal");
-            rb.velocity = new Vector2(Movement * behavior._PlayerSpeed, rb.velocity.y);              
+            rb.velocity = new Vector2(Movement * behaviour._PlayerSpeed, rb.velocity.y);              
         }
 	}
 }

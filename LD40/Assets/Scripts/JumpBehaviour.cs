@@ -5,24 +5,49 @@ using UnityEngine;
 public class JumpBehaviour : MonoBehaviour {
 
     public bool IsJumping { get; set; }
+    public bool HasDoubleJumped { get; set; }
 
     public float JumpPower { get; set; }
-    public bool AskForJump { get; set; }
-	// Use this for initialization
-	void Start () {
+    public bool AskedForJump { get; set; }
+
+    Rigidbody2D rb; 
+
+    // Use this for initialization
+    void Start () {
         IsJumping = false;
-        AskForJump = false;
+        AskedForJump = false;
         JumpPower = 800;
+        HasDoubleJumped = false;
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    public void AskForJump()
+    {
+        AskedForJump = false;
+        if (!IsJumping)
+        {
+            AskedForJump = true;
+        }
+
+        if (IsJumping && !HasDoubleJumped)
+        {
+            AskedForJump = true;
+            HasDoubleJumped = true;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         IsJumping = false;
+        HasDoubleJumped = false;
     }
+
     private void OnTriggerStay2D(Collider2D other)
     {
         IsJumping = false;
+        HasDoubleJumped = false;
     }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         IsJumping = true;
@@ -30,13 +55,10 @@ public class JumpBehaviour : MonoBehaviour {
 
     // Update is called once per frame
     void FixedUpdate () {
-        Debug.Log(AskForJump);
-        if(AskForJump)
-        {
-            Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        if(AskedForJump)
+        {         
             rb.AddForce(new Vector2(0,JumpPower));
-            AskForJump = false;
+            AskedForJump = false;
         }
-
     }
 }
