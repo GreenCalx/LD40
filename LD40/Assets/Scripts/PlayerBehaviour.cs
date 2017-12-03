@@ -5,11 +5,17 @@ using UnityEngine;
 public class PlayerBehaviour : MonoBehaviour {
 
     public float _PlayerSpeed { get; set; }
+    private bool _IsDead = false;
 
     // Use this for initialization
     void Start () {
         _PlayerSpeed = 10;
 	}
+
+    void Kill()
+    {
+        _IsDead = true;
+    }
 	
 	// Update is called once per frame
 	void Update () {

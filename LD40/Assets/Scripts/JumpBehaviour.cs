@@ -9,14 +9,16 @@ public class JumpBehaviour : MonoBehaviour {
 
     public float JumpPower { get; set; }
     public bool AskedForJump { get; set; }
+    public bool WallSlide { get; set; }
 
-    Rigidbody2D rb; 
+    Rigidbody2D rb;
+    Vector3 SurfaceNormal;
 
     // Use this for initialization
     void Start () {
         IsJumping = false;
         AskedForJump = false;
-        JumpPower = 800;
+        JumpPower = 15;
         HasDoubleJumped = false;
         rb = GetComponent<Rigidbody2D>();
     }
@@ -51,14 +53,41 @@ public class JumpBehaviour : MonoBehaviour {
     private void OnTriggerExit2D(Collider2D collision)
     {
         IsJumping = true;
+        WallSlide = false;
+        
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        SurfaceNormal = collision.contacts[0].normal;
+        Debug.Log(Vector2.Dot(SurfaceNormal, Vector2.up));
+        if (Vector2.Dot(SurfaceNormal, Vector2.up) <= 0.1)
+        { 
+            // WAll riding
+            WallSlide = true;
+        }
     }
 
     // Update is called once per frame
     void FixedUpdate () {
         if(AskedForJump)
-        {         
-            rb.AddForce(new Vector2(0,JumpPower));
+        {
+            if (WallSlide)
+            {
+                rb.AddForce(new Vector2(SurfaceNormal.x * JumpPower*2, JumpPower), ForceMode2D.Impulse);
+            }
+            else
+            {
+                rb.AddForce(new Vector2(0, SurfaceNormal.y * JumpPower), ForceMode2D.Impulse);
+            }
             AskedForJump = false;
+            return;
+        }
+
+        if (WallSlide)
+        {
+            Debug.Log("wallslide");
+            rb.velocity = new Vector2(0, -0.7f);
         }
     }
 }

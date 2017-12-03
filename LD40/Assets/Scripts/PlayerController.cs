@@ -30,9 +30,14 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        if(transform) {
-            float Movement = Input.GetAxis("Horizontal");
-            rb.velocity = new Vector2(Movement * behaviour._PlayerSpeed, rb.velocity.y);              
+        float Movement = Input.GetAxis("Horizontal");
+        if(jump.WallSlide)
+        {
+            //rb.velocity = new Vector2( Movement * behaviour._PlayerSpeed, rb.velocity.y);
         }
-	}
+        else
+        {
+            rb.velocity = new Vector2(Movement * behaviour._PlayerSpeed, rb.velocity.y);
+        }
+    }
 }
