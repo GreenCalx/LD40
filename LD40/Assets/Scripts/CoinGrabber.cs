@@ -21,5 +21,6 @@ public class CoinGrabber : MonoBehaviour {
         __coinGrabbed += n_coin;
     }
 
+    public int getCoins() { return __coinGrabbed; }
 
 }

@@ -16,14 +16,16 @@ public class CoinBehaviour : MonoBehaviour {
 		
 	}
 
+
+
     // Tries to get grabbed by the collider
-    void onTriggerEnter(Collider collider)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        CoinGrabber coinGrabber = collider.GetComponent<CoinGrabber>();
+        CoinGrabber coinGrabber = other.gameObject.GetComponent<CoinGrabber>();
         if (null==coinGrabber)
             return;
 
         coinGrabber.addCoin(__value);
-        Destroy(this);
+        Destroy(this.gameObject);
     }
 }
