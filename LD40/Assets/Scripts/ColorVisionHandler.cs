@@ -57,8 +57,10 @@ public class ColorVisionHandler  {
         COLOR retCol = COLOR.NEUTRAL;
         if (iColors.Contains(COLOR.RED) && iColors.Contains(COLOR.BLUE))
             retCol = COLOR.PURPLE;
+
         else if (iColors.Contains(COLOR.YELLOW) && iColors.Contains(COLOR.BLUE))
             retCol = COLOR.GREEN;
+
         else if (iColors.Contains(COLOR.RED) && iColors.Contains(COLOR.YELLOW))
             retCol = COLOR.ORANGE;
 

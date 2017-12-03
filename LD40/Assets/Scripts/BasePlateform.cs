@@ -28,7 +28,12 @@ public class BasePlateform : MonoBehaviour
     private void togglePlateforms(bool activate)
     {
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
-        sr.enabled = activate;
+        //sr.enabled = activate;
+        if (!activate)
+            sr.color = new Color(1f, 1f, 1f, .5f);
+        else
+            sr.color = new Color(1f, 1f, 1f, 1f);
+
         BoxCollider2D b2D = GetComponent<BoxCollider2D>();
         b2D.enabled = activate;
     }
