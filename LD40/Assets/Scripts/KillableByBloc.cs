@@ -17,7 +17,6 @@ public class KillableByBloc : MonoBehaviour {
         {
             if (go.GetComponent<BasePlateform>())
             {
-                ;
                 EnnemyBehaviour behaviour = GetComponent<EnnemyBehaviour>();
                 if (behaviour)
                 {
