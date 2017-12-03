@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RedPlateform : BasePlateform {
+public class BluePlateform : BasePlateform {
 
     void Start()
     {
@@ -11,7 +11,7 @@ public class RedPlateform : BasePlateform {
 
     public override bool checkColor()
     {
-        return ( cvs.getColor() != ColorVisionHandler.COLOR.RED );
+        return ( cvs.getColor() != ColorVisionHandler.COLOR.BLUE );
     }
 
 }

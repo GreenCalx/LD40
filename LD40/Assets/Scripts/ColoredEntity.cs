@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasePlateform : MonoBehaviour
-{
+public class ColoredEntity : MonoBehaviour {
 
     protected bool isActive;
     protected ColorVisionSelector cvs;

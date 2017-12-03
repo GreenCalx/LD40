@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlateformeRoamAI : MonoBehaviour
 {
-    public BasePlateform attachedPlateform;
+    public RoamablePlateform attachedPlateform;
 
     private MoveController __moveController;
 
@@ -12,11 +12,6 @@ public class PlateformeRoamAI : MonoBehaviour
     private Vector2 __leftLimit;
     private Vector2 __rightLimit;
     private bool isMovingLeft;
-
-    public PlateformeRoamAI(BasePlateform iAttachedPlateform)
-    {
-        attachedPlateform = iAttachedPlateform;
-    }
 
     // Use this for initialization
     void Start()
