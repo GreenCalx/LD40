@@ -40,7 +40,14 @@ public class PlateformeRoamAI : MonoBehaviour
         __moveController.setCurrentDirection(__currentDirection);
 
     }
-    
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (!collision.collider.name.Contains("player"))
+        {
+            flip();
+        }
+    }
 
     // Update is called once per frame
     void Update()
