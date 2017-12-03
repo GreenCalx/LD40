@@ -14,12 +14,11 @@ public class CoinCountLabel : MonoBehaviour {
         __player = GameObject.Find("player");
         __coinGrabber = __player.GetComponent<CoinGrabber>();
         __text = GetComponent<Text>();
-
     }
 
     void onGUI()
     {
-        __text.text = "COINS : " + __coinGrabber.getCoins().ToString();
+        //__text.text = "COINS : " + __coinGrabber.getCoins().ToString();
     }
 	
 	// Update is called once per frame
