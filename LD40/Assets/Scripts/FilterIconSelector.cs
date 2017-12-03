@@ -31,8 +31,8 @@ public class FilterIconSelector : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         int imageNumber = __cvs.getActiveColors().Count;
-        Debug.Log(imageNumber);
-        Debug.Log(__imageList.Count);
+        //Debug.Log(imageNumber);
+        //Debug.Log(__imageList.Count);
         if ( __imageList.Count != imageNumber )
         {
             foreach (GameObject go in __imageList)

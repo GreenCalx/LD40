@@ -56,7 +56,7 @@ public class ColorVisionSelector : MonoBehaviour {
             insertColor(ColorVisionHandler.COLOR.NEUTRAL);
         }
 
-        Debug.Log("Active Color : " + getColor().ToString());
+        //Debug.Log("Active Color : " + getColor().ToString());
     }
 
 
@@ -73,7 +73,7 @@ public class ColorVisionSelector : MonoBehaviour {
         }
 
 
-        Debug.Log("Active Colors : " + __activeColor[0] + " , " + __activeColor[1]);
+       // Debug.Log("Active Colors : " + __activeColor[0] + " , " + __activeColor[1]);
     }
 
     public List<ColorVisionHandler.COLOR> getActiveColors() { return __activeColor; }

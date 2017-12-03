@@ -11,14 +11,18 @@ public class KillableByBloc : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        Debug.Log("TRIGGER ENTER KILLABLEBYBLOC");
+        //Debug.Log("TRIGGER ENTER KILLABLEBYBLOC");
         GameObject go = collider.gameObject;
-        if (!go.name.Contains("player"))
+        if (go)
         {
-            EnnemyBehaviour behaviour = GetComponent<EnnemyBehaviour>();
-            if (behaviour)
+            if (go.GetComponent<BasePlateform>())
             {
-                behaviour.Kill();
+                ;
+                EnnemyBehaviour behaviour = GetComponent<EnnemyBehaviour>();
+                if (behaviour)
+                {
+                    behaviour.Kill();
+                }
             }
         }
     }

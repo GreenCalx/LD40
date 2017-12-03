@@ -18,7 +18,7 @@ public class EnnemyBehaviour : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("COLLISION ENTER ENNEMYBEHAVIOUR");
+        // Debug.Log("COLLISION ENTER ENNEMYBEHAVIOUR");
         GameObject go = collision.collider.gameObject;
         if (go.name.Contains("player"))
         {

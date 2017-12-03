@@ -105,7 +105,7 @@ public class JumpBehaviour : MonoBehaviour {
         if (IsGrounded())
             CanDoubleJump = true;
 
-        Debug.Log(CanDoubleJump);
+        //Debug.Log(CanDoubleJump);
 
         RB2D.AddForce(new Vector2(((input.x * behaviour.PlayerSpeed) - RB2D.velocity.x) * (IsGrounded() ? accel : airAccel), 
                                     0)); 
@@ -118,7 +118,7 @@ public class JumpBehaviour : MonoBehaviour {
         if (IsOnWall() && !IsGrounded() && input.y == 1)
             RB2D.velocity = new Vector2(-wallDirection() * behaviour.PlayerSpeed * 0.75f, RB2D.velocity.y);
 
-        Debug.Log(CanDoubleJump);
+        //Debug.Log(CanDoubleJump);
 
         input.y = 0;
     }

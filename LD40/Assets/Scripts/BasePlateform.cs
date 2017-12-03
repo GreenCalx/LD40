@@ -34,8 +34,9 @@ public class BasePlateform : MonoBehaviour
         else
             sr.color = new Color(1f, 1f, 1f, 1f);
 
-        BoxCollider2D b2D = GetComponent<BoxCollider2D>();
-        b2D.enabled = activate;
+        BoxCollider2D[] b2D = GetComponents<BoxCollider2D>();
+        foreach(var collider in b2D)
+            collider.enabled = activate;
     }
 
 }
