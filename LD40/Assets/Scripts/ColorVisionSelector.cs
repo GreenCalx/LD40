@@ -71,6 +71,9 @@ public class ColorVisionSelector : MonoBehaviour {
         {
             __activeColor[0] = iColor;
         }
+
+
+        Debug.Log("Active Colors : " + __activeColor[0] + " , " + __activeColor[1]);
     }
 
     public List<ColorVisionHandler.COLOR> getActiveColors() { return __activeColor; }
