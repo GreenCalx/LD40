@@ -37,7 +37,6 @@ public class CoinBehaviour : MonoBehaviour {
 
         AudioSource.PlayClipAtPoint(OnGrab, transform.position);
 
-
         foreach ( GameObject go in SpawnWhenGrabbed)
         {
             go.SetActive(true);
