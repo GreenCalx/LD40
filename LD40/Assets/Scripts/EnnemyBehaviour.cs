@@ -5,10 +5,10 @@ using UnityEngine;
 public class EnnemyBehaviour : MonoBehaviour {
 
     private bool IsAlive = true;
+    public AudioClip DeathSound;
 
 	// Use this for initialization
 	void Start () {
-		
 	}
 
     public void Kill()
@@ -31,8 +31,12 @@ public class EnnemyBehaviour : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
+    void Update()
+    {
         if (!IsAlive)
+        {
+            AudioSource.PlayClipAtPoint(DeathSound, transform.position);
             Destroy(this.gameObject);
-	}
+        }
+    }
 }

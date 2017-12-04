@@ -12,6 +12,8 @@ public class PlayerBehaviour : MonoBehaviour {
     public float PlayerSpeed { get; set; }
     private bool _IsDead = false;
 
+    public AudioClip DeathSound;
+
     // Use this for initialization
     void Start () {
         PlayerSpeed = PlayerBaseSpeed;
@@ -28,7 +30,8 @@ public class PlayerBehaviour : MonoBehaviour {
     {
         if (_IsDead)
         {
-            Destroy(this.gameObject);
+            AudioSource.PlayClipAtPoint(DeathSound, transform.position);
+            Destroy(this.gameObject);            
             SceneManager.LoadScene("game_over");
 
         }

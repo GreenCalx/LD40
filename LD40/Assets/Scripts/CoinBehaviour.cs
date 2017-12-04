@@ -7,8 +7,11 @@ public class CoinBehaviour : MonoBehaviour {
     private int __value;
     public List<GameObject> SpawnWhenGrabbed;
 
-	// Use this for initialization
-	void Start () {
+    public AudioClip OnGrab;
+    public AudioClip OnSpawnObject;
+
+    // Use this for initialization
+    void Start () {
         __value = 1;
         foreach(GameObject go in SpawnWhenGrabbed)
         {
@@ -32,9 +35,13 @@ public class CoinBehaviour : MonoBehaviour {
 
         coinGrabber.addCoin(__value);
 
+        AudioSource.PlayClipAtPoint(OnGrab, transform.position);
+
+
         foreach ( GameObject go in SpawnWhenGrabbed)
         {
             go.SetActive(true);
+            AudioSource.PlayClipAtPoint(OnSpawnObject, go.transform.position);
         }
 
         Destroy(this.gameObject);
