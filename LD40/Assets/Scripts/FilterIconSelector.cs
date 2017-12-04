@@ -16,8 +16,7 @@ public class FilterIconSelector : MonoBehaviour {
     public Sprite purpleFilter;
     public Sprite orangeFilter;
 
-    int Base = 400;
-    int SpriteSize = 35;
+    int SpriteSize = 50;
 
     public GameObject ImageInstance;
 
@@ -41,6 +40,12 @@ public class FilterIconSelector : MonoBehaviour {
             }
             __imageList.Clear();
 
+            int ScreenHeight = Screen.height;
+            int ScreenWidth  = Screen.width;
+            int ScreenMiddle = ScreenWidth / 2;
+            int BaseWidth    = ScreenMiddle - (SpriteSize * (imageNumber - 1));
+            int BaseHeight   = ScreenHeight - (ScreenHeight / 8);
+
             GameObject ui = GameObject.Find("UI");
             for (int i=0; i< imageNumber; ++i)
             {
@@ -49,7 +54,7 @@ public class FilterIconSelector : MonoBehaviour {
                 Image image = image_go.GetComponent<Image>();
                 // Make UI parent
                 image.transform.SetParent(ui.transform);
-                image.rectTransform.position = new Vector3(Base + SpriteSize*i, 400, 0);
+                image.rectTransform.position = new Vector3(BaseWidth + SpriteSize*i, BaseHeight, 0);
                 __imageList.Add(image_go);
             }
 
@@ -60,7 +65,7 @@ public class FilterIconSelector : MonoBehaviour {
                 Image image = image_go.GetComponent<Image>();
                 // Make UI parent
                 image.transform.SetParent(ui.transform);
-                image.rectTransform.position = new Vector3(Base, 375, 0);
+                image.rectTransform.position = new Vector3(ScreenMiddle, BaseHeight - SpriteSize, 0);
                 __imageList.Add(image_go);
             }
         }
