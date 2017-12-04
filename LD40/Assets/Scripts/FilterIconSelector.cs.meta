@@ -1,10 +1,19 @@
 fileFormatVersion: 2
 guid: b3b6ee81624ca644b870e52732dbb2c6
-timeCreated: 1512300430
+timeCreated: 1512419110
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - neutralFilter: {instanceID: 0}
+  - blueFilter: {instanceID: 0}
+  - redFilter: {instanceID: 0}
+  - yellowFilter: {instanceID: 0}
+  - greenFilter: {instanceID: 0}
+  - purpleFilter: {instanceID: 0}
+  - orangeFilter: {instanceID: 0}
+  - ImageInstance: {fileID: 1417960091867848, guid: 381cf53f790803342a488f6eb6bc36a0,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
