@@ -11,7 +11,9 @@ public class FixedSizedQueue<T>
 
     public FixedSizedQueue(int n_limit)
     {
-        Limit = n_limit; 
+        Limit = n_limit;
+        for (int i = 0; i < n_limit; i++)
+            q.Enqueue(default(T));
     }
 
     public void enqueue(T t)
@@ -23,12 +25,18 @@ public class FixedSizedQueue<T>
 
     public T getValueAtIndex(int index)
     {
-        return q.ElementAt(index);
+        if (q.Count < index)
+            return q.ElementAt(index);
+        else
+            return default(T);
     }
 
     public T Peek()
     {
-        return q.Peek();
+        if (q.Count >= 0)
+            return q.Peek();
+        else
+            return default(T);
     }
 
 }
