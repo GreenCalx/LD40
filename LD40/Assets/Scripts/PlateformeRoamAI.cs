@@ -75,7 +75,6 @@ public class PlateformeRoamAI : MonoBehaviour
 
             if (isStuck())
                 flip();
-
         }
     }
 

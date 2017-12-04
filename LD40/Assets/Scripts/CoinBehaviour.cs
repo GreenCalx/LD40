@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CoinBehaviour : MonoBehaviour {
 
-    private int __value;
+    public int __value;
     public List<GameObject> SpawnWhenGrabbed;
 
     public AudioClip OnGrab;

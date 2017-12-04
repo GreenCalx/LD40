@@ -14,9 +14,13 @@ public class PlayerFollower : MonoBehaviour {
 
 	// Update is called once per frame
 	void LateUpdate () {
-        Vector3 DesiredPosition = target.position;
-        Vector3 SmoothedPosition = Vector3.SmoothDamp(transform.position, DesiredPosition, ref Velocity, SmoothSpeed);
-        transform.position = new Vector3(SmoothedPosition.x, SmoothedPosition.y, transform.position.z);
+        Vector3 DesiredPosition;
+        if (target)
+        {
+            DesiredPosition = target.position;
+            Vector3 SmoothedPosition = Vector3.SmoothDamp(transform.position, DesiredPosition, ref Velocity, SmoothSpeed);
+            transform.position = new Vector3(SmoothedPosition.x, SmoothedPosition.y, transform.position.z);
+        }
         
 	}
 }
