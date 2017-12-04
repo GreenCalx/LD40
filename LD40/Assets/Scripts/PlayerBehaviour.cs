@@ -31,9 +31,8 @@ public class PlayerBehaviour : MonoBehaviour {
         if (_IsDead)
         {
             AudioSource.PlayClipAtPoint(DeathSound, transform.position);
-            Destroy(this.gameObject);            
+            Destroy(this.gameObject);           
             SceneManager.LoadScene("game_over");
-
         }
     }
 }
