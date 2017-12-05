@@ -10,11 +10,12 @@ public class EndPoint : MonoBehaviour {
     private float TimeAccumulation = 0;
     private CoinGrabber cg = null;
     private TextMesh tm = null;
+    private GameObject player;
 
 	// Use this for initialization
 	void Start () {
 
-        GameObject player = GameObject.Find("player");
+        player = GameObject.Find("player");
         if(player)
         {
            cg = player.GetComponent<CoinGrabber>();
@@ -60,6 +61,9 @@ public class EndPoint : MonoBehaviour {
     void Update () {
         if ( TimeAccumulation > WaitingTime )
         {
+            Upgrades.CurrentScore = cg.getCoins();
+            Upgrades.CurrentHighScore = (Upgrades.CurrentHighScore < Upgrades.CurrentScore) ? Upgrades.CurrentScore : Upgrades.CurrentHighScore;
+
             SceneManager.LoadScene("scene_hub");
         }
 

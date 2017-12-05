@@ -23,6 +23,7 @@ public class PlayerBehaviour : MonoBehaviour {
     public void Kill()
     {
         _IsDead = true;
+
     }
 
     // Update is called once per frame
