@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class ReturnToHub : MonoBehaviour {
 
+    private int WaitingTime = 5;
+    private float TimeAccumulation = 0;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -12,7 +15,9 @@ public class ReturnToHub : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.KeypadEnter))
+        TimeAccumulation += Time.deltaTime;
+
+        if( (TimeAccumulation > WaitingTime) || (Input.anyKeyDown) )
         {
             SceneManager.LoadScene("scene_hub");
         }
