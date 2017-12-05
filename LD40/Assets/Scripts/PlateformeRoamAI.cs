@@ -42,7 +42,8 @@ public class PlateformeRoamAI : MonoBehaviour
 
         // Simple position tracker
         lastXPositions = new FixedSizedQueue<float>(10);  // Arbitrary cache size ( record 5 last positions )
-
+        for (int i = 0; i < lastXPositions.Limit; i++)
+            lastXPositions.enqueue(Random.Range(0f, 100f));
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
