@@ -31,10 +31,10 @@ public class ColorVisionSelector : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        bool blueFilter     = Input.GetKeyDown(KeyCode.B);
-        bool redFilter      = Input.GetKeyDown(KeyCode.R);
-        bool yellowFilter   = Input.GetKeyDown(KeyCode.Y);
-        bool neutralFilter  = Input.GetKeyDown(KeyCode.N);
+        bool blueFilter     = Input.GetKeyDown(KeyCode.Z);
+        bool redFilter      = Input.GetKeyDown(KeyCode.A);
+        bool yellowFilter   = Input.GetKeyDown(KeyCode.E);
+        bool neutralFilter  = Input.GetKeyDown(KeyCode.R);
 
         if ( blueFilter && (!__activeColor.Contains(ColorVisionHandler.COLOR.BLUE)) )
         {
