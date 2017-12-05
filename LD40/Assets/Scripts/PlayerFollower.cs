@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerFollower : MonoBehaviour {
 
-    float SmoothSpeed = 0.1f;
+    float SmoothSpeed = 0.3f;
     Transform target;
     private Vector3 Velocity = Vector3.zero;
     // Use this for initialization
