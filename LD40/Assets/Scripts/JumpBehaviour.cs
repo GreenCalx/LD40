@@ -98,6 +98,8 @@ public class JumpBehaviour : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
             input.y = 1;
+
+        AskedForJump = (input.y > 0);
     }
 
     // Update is called once per frame
@@ -122,4 +124,6 @@ public class JumpBehaviour : MonoBehaviour {
 
         input.y = 0;
     }
+
+    public Vector2 getInput() { return this.input; }
 }

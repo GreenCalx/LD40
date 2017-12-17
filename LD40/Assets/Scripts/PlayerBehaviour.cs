@@ -18,7 +18,11 @@ public class PlayerBehaviour : MonoBehaviour {
     void Start () {
         PlayerSpeed = PlayerBaseSpeed;
         PlayerMaxSpeed = PlayerBaseMaxSpeed;
-	}
+    }
+
+    void Awake()
+    {
+    }
 
     public void Kill()
     {
@@ -35,5 +39,10 @@ public class PlayerBehaviour : MonoBehaviour {
             Destroy(this.gameObject);           
             SceneManager.LoadScene("game_over");
         }
+
     }
+
+    
+
+
 }
